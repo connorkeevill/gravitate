@@ -1,7 +1,7 @@
 import {type Dimensions, Vector, type VectorElements} from "./geometry/vector";
 
 
-class Body<D extends Dimensions> {
+export class Body<D extends Dimensions> {
     mass: number
     position: Vector<D>
     velocity: Vector<D>
