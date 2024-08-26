@@ -69,8 +69,29 @@ export class Vector<D extends Dimensions> {
      *
      * @param factor the scale factor
      */
-    scale(factor: number): void {
-        this.elements = this.elements.map((element) => element * factor)
+    scale(factor: number): Vector<D> {
+        let out = Vector.NewZeroVector<D>()
+
+        out.elements = this.elements.map((element) => element * factor)
+        return out
+    }
+
+    /**
+     * Adds other to this vector and returns the output.
+     */
+    add(other: Vector<D>): Vector<D> {
+        if (this.elements.length != other.elements.length) {
+            throw new Error("Vector dimension mismatch. BIG PROBLEM as type system should protect against this.")
+        }
+
+        let out = Vector.NewZeroVector<D>()
+
+        for (let i = 0; i < this.elements.length; i++)
+        {
+            out.elements[i] = this.elements[i] + other.elements[i]
+        }
+
+        return out
     }
 
     /**
@@ -90,4 +111,6 @@ export class Vector<D extends Dimensions> {
 
         return Math.sqrt(sum)
     }
+
+
 }
