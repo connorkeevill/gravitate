@@ -106,7 +106,7 @@ export class Vector<D extends Dimensions> {
 
         let sum = 0;
         for (let i = 0; i < this.elements.length; i++) {
-            sum += Math.pow(this.elements[i] + other.elements[i], 2)
+            sum += Math.pow(this.elements[i] - other.elements[i], 2)
         }
 
         return Math.sqrt(sum)
