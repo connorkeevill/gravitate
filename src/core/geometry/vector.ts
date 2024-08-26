@@ -1,7 +1,7 @@
-type Dimensions = 2 | 3 | 4
+export type Dimensions = 2 | 3 | 4
 
-type VectorElements<N extends Dimensions> = 
-    N extends 2 
+export type VectorElements<N extends Dimensions> =
+    N extends 2
     ? [number, number]
     : N extends 3
     ? [number, number, number]
