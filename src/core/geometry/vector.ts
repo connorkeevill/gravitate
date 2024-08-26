@@ -112,5 +112,43 @@ export class Vector<D extends Dimensions> {
         return Math.sqrt(sum)
     }
 
+    /**
+     * Returns the vector from this vector to the other.
+     *
+     * @param other the other vector
+     */
+    vectorTo(other: Vector<D>): Vector<D> {
+        if (this.elements.length != other.elements.length) {
+            throw new Error("Vector dimension mismatch. BIG PROBLEM as type system should protect against this.")
+        }
 
+        let out = Vector.NewZeroVector<D>()
+
+        // ->AB = B - A
+        for (let i = 0; i < this.elements.length; i++) {
+            out.elements[i] = other.elements[i] - this.elements[i]
+        }
+
+        return out
+    }
+
+    /**
+     * Gets the magnitude of this vector.
+     */
+    magnitude(): number {
+        let sum = 0
+
+        for (const element of this.elements) {
+           sum += Math.pow(element, 2)
+        }
+
+        return Math.sqrt(sum)
+    }
+
+    /**
+     * Returns this vector normalised.
+     */
+    normalise(): Vector<D> {
+        return this.scale(1 / this.magnitude())
+    }
 }
