@@ -39,6 +39,24 @@ export class Vector<D extends Dimensions> {
         this.elements = elements
     }
 
+    x() {
+        if(this.elements.length < 2) { throw new Error("Vector not big enough") }
+
+        return this.elements[0]
+    }
+
+    y() {
+        if(this.elements.length < 2) { throw new Error("Vector not big enough") }
+
+        return this.elements[1]
+    }
+
+    z() {
+        if(this.elements.length < 3) { throw new Error("Vector not big enough") }
+
+        return this.elements[2]
+    }
+
     /**
      * Static method which creates a new zero vector of the given dimension
      */
