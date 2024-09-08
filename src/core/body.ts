@@ -11,4 +11,8 @@ export class Body<D extends Dimensions> {
         this.position = position
         this.velocity = velocity
     }
+
+    update(timedelta: number) {
+        this.position = this.position.add(this.velocity.scale(timedelta))
+    }
 }

@@ -5,8 +5,8 @@
     import {onMount} from "svelte";
     
     let universe = new Universe<2>([
-        new Body<2>(90, new Vector<2>(100, 70)),
-        new Body<2>(900, new Vector<2>(50, 40)),
+        new Body<2>(0, new Vector<2>(300, 250), new Vector<2>(22.36, 0)),
+        new Body<2>(25000, new Vector<2>(300, 300), new Vector<2>(0, 0)),
     ])
     
     let main_canvas: HTMLCanvasElement
@@ -26,14 +26,34 @@
         
         for (const body of universe.bodies) {
             context.beginPath()
-            context.arc(body.position.x(), body.position.y(), Math.sqrt(body.mass), 0, 2 * Math.PI)
+            context.arc(body.position.x(), body.position.y(), 10, 0, 2 * Math.PI)
             context.stroke()
         }
     }
     
     onMount(() => draw())
     
+    let fps = 60
+    let previousTime = 0
     
+    function loop(currentTime: number) {
+        let timePassed = currentTime - previousTime
+        if (timePassed <= 1000 / fps) {
+            requestAnimationFrame(loop)
+            return
+        }
+        previousTime = currentTime
+        
+        let simsteps = 150
+        for(let i = 0; i < simsteps; i++) {
+            universe.update(1 / (simsteps * fps))
+        }
+        
+        draw()
+        requestAnimationFrame(loop)
+    }
+    
+    loop(0)
 </script>
 
 <main class="p-5">
