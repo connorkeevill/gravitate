@@ -26,7 +26,7 @@
         
         for (const body of universe.bodies) {
             context.beginPath()
-            context.arc(body.position.x(), body.position.y(), 10, 0, 2 * Math.PI)
+            context.arc(body.position.x(), body.position.y(), 30, 0, 2 * Math.PI)
             context.stroke()
         }
     }
