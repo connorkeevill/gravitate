@@ -5,8 +5,8 @@
     import {onMount} from "svelte";
     
     let universe = new Universe<2>([
-        new Body<2>(0, new Vector<2>(300, 250), new Vector<2>(22.36, 0)),
-        new Body<2>(25000, new Vector<2>(300, 300), new Vector<2>(0, 0)),
+        new Body<2>(12000, new Vector<2>(300, 250), new Vector<2>(22.36, 0)),
+        new Body<2>(50000, new Vector<2>(300, 300), new Vector<2>(0, 0)),
     ])
     
     let main_canvas: HTMLCanvasElement
@@ -26,7 +26,7 @@
         
         for (const body of universe.bodies) {
             context.beginPath()
-            context.arc(body.position.x(), body.position.y(), 30, 0, 2 * Math.PI)
+            context.arc(body.position.x(), body.position.y(), Math.sqrt(body.mass / 100), 0, 2 * Math.PI)
             context.stroke()
         }
     }
