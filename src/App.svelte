@@ -58,9 +58,6 @@
 
 <main class="p-5">
     <h1 class="text-center text-3xl mb-5">Simulation below!!</h1>
-    
-    <button on:click={draw}>Draw!</button>
-
     <canvas bind:this={main_canvas} id="canvas" class="w-full h-screen border border-1 border-black rounded">
         Your browser doesn't support canvas.
     </canvas>
