@@ -61,7 +61,7 @@
     
     <button on:click={draw}>Draw!</button>
 
-    <canvas bind:this={main_canvas} id="canvas" class="w-full h-full border border-1 border-black rounded">
+    <canvas bind:this={main_canvas} id="canvas" class="w-full h-screen border border-1 border-black rounded">
         Your browser doesn't support canvas.
     </canvas>
 </main>
